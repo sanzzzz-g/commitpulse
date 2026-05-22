@@ -54,19 +54,74 @@ The design philosophy is simple: **your commit history deserves a monument, not 
 
 ## 🔴 Live Demo
 
-Paste into any Markdown file — GitHub README, Notion, or your portfolio:
+Transform your GitHub contribution history into a cinematic 3D monolith.
+
+### ✨ Theme Showcase
+
+<table align="center">
+<tr>
+
+<td align="center">
+
+#### Default
+
+<a href="https://commitpulse.vercel.app/api/streak?user=jhasourav07">
+  <img 
+    src="https://commitpulse.vercel.app/api/streak?user=jhasourav07" 
+    width="600"
+  />
+</a>
+
+</td>
+
+<td align="center">
+
+#### Neon
+
+<a href="https://commitpulse.vercel.app/api/streak?user=jhasourav07&theme=neon">
+  <img 
+    src="https://commitpulse.vercel.app/api/streak?user=jhasourav07&theme=neon" 
+    width="600"
+  />
+</a>
+
+</td>
+
+<td align="center">
+
+#### Custom
+
+<a href="https://commitpulse.vercel.app/api/streak?user=jhasourav07&bg=0a0a0a&accent=ff6b35&text=ffffff">
+  <img 
+    src="https://commitpulse.vercel.app/api/streak?user=jhasourav07&bg=0a0a0a&accent=ff6b35&text=ffffff" 
+    width="600"
+  />
+</a>
+
+</td>
+
+</tr>
+</table>
+
+---
+
+### 📋 Copy Examples
+
+#### 🌑 Default
 
 ```md
-<!-- Default (Dark theme) -->
-
 ![CommitPulse](https://commitpulse.vercel.app/api/streak?user=jhasourav07)
+```
 
-<!-- Neon theme -->
+#### 🌟 Neon
 
+```md
 ![CommitPulse](https://commitpulse.vercel.app/api/streak?user=jhasourav07&theme=neon)
+```
 
-<!-- Custom colors -->
+#### 🔥 Custom
 
+```md
 ![CommitPulse](https://commitpulse.vercel.app/api/streak?user=jhasourav07&bg=0a0a0a&accent=ff6b35&text=ffffff)
 ```
 
