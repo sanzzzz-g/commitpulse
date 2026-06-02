@@ -2,9 +2,11 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import type { ImgHTMLAttributes } from 'react';
 import Leaderboard from './Leaderboard';
+
 vi.mock('next/image', () => ({
   default: (props: ImgHTMLAttributes<HTMLImageElement>) => <img alt="" {...props} />,
 }));
+
 class MockIntersectionObserver {
   observe() {}
   unobserve() {}
@@ -80,7 +82,9 @@ describe('Leaderboard accessibility behavior', () => {
 
     const buttons = screen.getAllByRole('button');
 
-    expect(buttons[0].getAttribute('tabindex')).toBe('0');
+    buttons[0].focus();
+
+    expect(document.activeElement).toBe(buttons[0]);
   });
 
   it('displays contribution counts in accessible text content', () => {
