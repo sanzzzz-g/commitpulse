@@ -5,9 +5,7 @@ import BrandParticles from './BrandParticles';
 describe('BrandParticles - TypeScript Compiler Validation & Constraints (Issue #2652 Equivalent)', () => {
   it('Zero-Prop Interface Validation (Field Properties Equivalent): strictly enforces a zero-argument signature', () => {
     // Assert that the component function takes zero arguments (no props)
-    expectTypeOf<typeof BrandParticles>().parameters.toEqualTypeOf<
-      [] | [props: Record<string, never>] | [props: unknown, context?: unknown]
-    >();
+    expectTypeOf<typeof BrandParticles>().parameters.toEqualTypeOf<[]>();
   });
 
   it('Invalid Prop Rejection (Prop Blocking Equivalent): triggers static compiler errors if arbitrary props are injected', () => {
