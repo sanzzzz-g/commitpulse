@@ -93,7 +93,7 @@ describe('HistoricalTrendView - Error Resilience & Exception Safety (Issue #2678
   it('Assert that target modules render a clean error recovery UI instead of crashing the site: handles single-item arrays safely in sparkline calculation', () => {
     // A single item array can cause divide-by-zero in sparkline points `(streakSeries.length - 1)`
     // The component handles this via `streakSeries.length <= 1 ? 0 : ...`
-    const singleData = [{ date: '2023-01-01', count: 5, intensity: 1 }];
+    const singleData = [{ date: '2023-01-01', count: 5, intensity: 1 as 0 | 1 | 2 | 3 | 4 }];
     render(<HistoricalTrendView username="test" activity={singleData} period={defaultPeriod} />);
 
     // Sparkline should render without crashing
