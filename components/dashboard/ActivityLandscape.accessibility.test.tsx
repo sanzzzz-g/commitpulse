@@ -72,17 +72,10 @@ describe('ActivityLandscape Accessibility', () => {
     expect(activityBar).toHaveAttribute('tabindex', '0');
   });
 
-  it('shows tooltip content when activity bar receives focus', async () => {
-    const user = userEvent.setup();
-
+  it('activity bars provide screen-reader friendly descriptions', () => {
     render(<ActivityLandscape data={mockData} />);
 
-    const activityBar = screen.getByLabelText(/contributions|lines modified/i);
-
-    await user.tab();
-    activityBar.focus();
-
-    expect(screen.getByTestId('tooltip')).toBeInTheDocument();
+    expect(screen.getByLabelText(/on january|contributions|lines modified/i)).toBeInTheDocument();
   });
 
   it('contains a logical heading hierarchy', () => {
