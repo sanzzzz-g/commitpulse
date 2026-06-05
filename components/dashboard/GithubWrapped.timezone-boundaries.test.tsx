@@ -52,62 +52,36 @@ vi.mock('framer-motion', async () => {
 
 const mockProfile = {
   login: 'timezone-user',
+  username: 'timezone-user',
+  name: 'Timezone Test User',
   avatar_url: 'https://github.com/test.png',
+  avatarUrl: 'https://github.com/test.png',
   html_url: 'https://github.com/test',
+  isPro: false,
+  bio: 'Testing timezones',
+  location: 'UTC',
+  joinedDate: '2024-01-01',
+  developerScore: 75,
+  stats: {
+    repositories: 10,
+    followers: 50,
+    following: 25,
+    stars: 100,
+  },
+  type: 'User' as const,
 };
 
 const mockWrappedData = {
+  calendar: {
+    totalContributions: 1200,
+    weeks: [],
+  },
   totalContributions: 1200,
-  totalCommits: 120,
-  totalStars: 45,
-
-  longestStreak: 12,
-  currentStreak: 4,
-
-  busiestDay: 'Monday',
+  mostActiveDate: '2024-03-15',
+  highestDailyCount: 45,
   busiestMonth: '2024-03',
   weekendRatio: 30,
-
-  topLanguages: [
-    {
-      name: 'TypeScript',
-      percentage: 60,
-    },
-    {
-      name: 'JavaScript',
-      percentage: 40,
-    },
-  ],
-
-  topRepositories: [
-    {
-      name: 'commitpulse',
-      stars: 25,
-      forks: 5,
-    },
-  ],
-
-  contributionYears: ['2024'],
-
-  totalPullRequests: 14,
-  totalIssues: 6,
-  totalReviews: 9,
-
-  peakCommitHour: 22,
-  mostActiveMonth: 'March',
-
-  averageCommitsPerDay: 6,
-  contributionsThisYear: 800,
-  favoriteLanguage: 'TypeScript',
-
-  totalRepositories: 18,
-  totalForks: 12,
-  mergedPullRequests: 10,
-
-  codingSessions: 42,
-  peakDayCommits: 25,
-
-  achievements: ['Fast Committer'],
+  topLanguage: 'TypeScript',
 };
 
 describe('GithubWrapped Timezone Boundaries', () => {
