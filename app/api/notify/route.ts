@@ -2,10 +2,10 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import { Notification } from '@/models/Notification';
 import { notifyPostSchema, notifyGetSchema } from '@/lib/validations';
-import { notifyRateLimiter } from '@/lib/rate-limit';
 import { getClientIp } from '@/utils/getClientIp';
 import { DistributedCache } from '@/lib/cache';
 import { gitHubUserValidator } from '@/services/github/validate-user';
+import { getRateLimitHeaders, notifyRateLimiter } from '@/lib/rate-limit';
 
 const notifyWriteCache = new DistributedCache<number>(5000, 60000);
 const NOTIFY_WRITE_COOLDOWN_MS = 5 * 60 * 1000;
@@ -44,11 +44,12 @@ export async function POST(req: Request) {
   // fallback ensures rate limit is ALWAYS applied
   const rateLimitKey =
     ip && ip !== 'unknown' ? ip : `unknown:${req.headers.get('user-agent') ?? 'no-agent'}`;
+  const rateLimitResult = await notifyRateLimiter.checkWithResult(rateLimitKey);
 
-  if (!(await notifyRateLimiter.check(rateLimitKey))) {
+  if (!rateLimitResult.success) {
     return NextResponse.json(
       { success: false, message: 'Too many requests, please try again later.' },
-      { status: 429 }
+      { status: 429, headers: getRateLimitHeaders(rateLimitResult) }
     );
   }
 
@@ -178,11 +179,15 @@ export async function GET(req: Request) {
   // Rate limiting
   const ip = getClientIp(req);
 
-  if (ip !== 'unknown' && !(await notifyRateLimiter.check(ip))) {
-    return NextResponse.json(
-      { success: false, message: 'Too many requests, please try again later.' },
-      { status: 429 }
-    );
+  if (ip !== 'unknown') {
+    const rateLimitResult = await notifyRateLimiter.checkWithResult(ip);
+
+    if (!rateLimitResult.success) {
+      return NextResponse.json(
+        { success: false, message: 'Too many requests, please try again later.' },
+        { status: 429, headers: getRateLimitHeaders(rateLimitResult) }
+      );
+    }
   }
 
   // Validate query params with Zod
