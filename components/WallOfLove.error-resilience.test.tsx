@@ -98,14 +98,14 @@ describe('WallOfLove Error Resilience', () => {
   });
 
   it('should maintain hydration stability when initial data is missing', () => {
-    const { container } = render(<WallOfLoveModule tweets={[]} />);
+    const { container } = render(<WallOfLoveModule />);
     expect(container).toBeDefined();
   });
 
   it('should render error recovery UI when runtime exception occurs', () => {
     render(
       <TestErrorBoundary forceError={true}>
-        <WallOfLoveModule tweets={[]} />
+        <WallOfLoveModule />
       </TestErrorBoundary>
     );
 
@@ -116,7 +116,7 @@ describe('WallOfLove Error Resilience', () => {
   it('should log exception to dev-telemetry tracker on failure', () => {
     render(
       <TestErrorBoundary forceError={true}>
-        <WallOfLoveModule tweets={[]} />
+        <WallOfLoveModule />
       </TestErrorBoundary>
     );
 
@@ -128,7 +128,7 @@ describe('WallOfLove Error Resilience', () => {
       <div>
         <header data-testid="app-header">App Header</header>
         <TestErrorBoundary forceError={true}>
-          <WallOfLoveModule tweets={[]} />
+          <WallOfLoveModule />
         </TestErrorBoundary>
       </div>
     );
@@ -138,7 +138,7 @@ describe('WallOfLove Error Resilience', () => {
   it('should trigger user reset or reload path on recovery panel click', () => {
     render(
       <TestErrorBoundary forceError={true}>
-        <WallOfLoveModule tweets={[]} />
+        <WallOfLoveModule />
       </TestErrorBoundary>
     );
 
