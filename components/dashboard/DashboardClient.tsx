@@ -648,13 +648,13 @@ export default function DashboardClient({
         <div className="bg-white/50 dark:bg-zinc-900/50 p-1.5 rounded-2xl flex gap-2 w-fit border border-black/10 dark:border-white/10 shadow-sm backdrop-blur-sm">
           <button
             onClick={() => setActiveTab('overview')}
-            className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'overview' ? 'bg-white dark:bg-zinc-800 text-gray-900 dark:text-white shadow-sm ring-1 ring-black/5 dark:ring-white/10' : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'}`}
+            className={`cursor-pointer px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'overview' ? 'bg-white dark:bg-zinc-800 text-gray-900 dark:text-white shadow-sm ring-1 ring-black/5 dark:ring-white/10' : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'}`}
           >
             Overview
           </button>
           <button
             onClick={() => setActiveTab('pr-insights')}
-            className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'pr-insights' ? 'bg-white dark:bg-zinc-800 text-gray-900 dark:text-white shadow-sm ring-1 ring-black/5 dark:ring-white/10' : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'}`}
+            className={`cursor-pointer px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'pr-insights' ? 'bg-white dark:bg-zinc-800 text-gray-900 dark:text-white shadow-sm ring-1 ring-black/5 dark:ring-white/10' : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'}`}
           >
             PR Insights
           </button>
